@@ -13,10 +13,13 @@ public class ProjectileControl : MonoBehaviour
     void Start()
     {   mira = GameObject.FindGameObjectWithTag("Scope");
         rb = GetComponent<Rigidbody>();
-        rb.AddForce (transform.TransformDirection(Vector3.MoveTowards(transform.position, mira.transform.position, Time.deltaTime * power)),
-        ForceMode.Impulse);
 
-        Invoke("Destruction", 3);
+        Vector3 direction = mira.transform.position - transform.position;
+        // rb.AddForce (transform.TransformDirection(Vector3.MoveTowards(transform.position, mira.transform.position, Time.deltaTime * power)),
+        // ForceMode.Impulse);
+        rb.AddForce(direction*power, ForceMode.Impulse);
+
+        Invoke("Destruction", 5);
 
     }
 
