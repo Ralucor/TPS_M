@@ -16,7 +16,7 @@ public class EnemyControl : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void CollisionEnter(Collider other){
+    void OnTriggerEnter(Collider other){
         if (other.CompareTag("Projectile"))
         {
            health --;

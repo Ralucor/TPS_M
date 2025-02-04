@@ -14,6 +14,7 @@ public class ProPlayerControl : MonoBehaviour
     public float jumpCooldown = 0.25f;
     public float airMultiplier = 0.4f;
     bool readyToJump;
+    bool aiming;
 
     // [HideInInspector] public float walkSpeed = 7;
     // [HideInInspector] public float sprintSpeed = 10;
@@ -41,10 +42,14 @@ public class ProPlayerControl : MonoBehaviour
         rb.freezeRotation = true;
 
         readyToJump = true;
+        aiming = false;
     }
 
     private void Update()
     {
+            if (Input.GetMouseButton(1)){
+                aiming=true;
+            }else{aiming=false;}
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
@@ -91,6 +96,12 @@ public class ProPlayerControl : MonoBehaviour
         // in air
         else if(!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+
+            if(aiming){
+                moveSpeed = 0;
+            } else{
+             moveSpeed=7;
+            }
     }
 
     private void SpeedControl()
