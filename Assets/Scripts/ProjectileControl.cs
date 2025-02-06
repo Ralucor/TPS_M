@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ProjectileControl : MonoBehaviour
 {
     Rigidbody rb ;
-    [SerializeField] float power = 30;
+    [SerializeField] float power = 15;
     GameObject mira;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,7 +19,7 @@ public class ProjectileControl : MonoBehaviour
         // ForceMode.Impulse);
         rb.AddForce(direction*power, ForceMode.Impulse);
 
-        Invoke("Destruction", 5);
+        Invoke("Destruction", 10);
 
     }
 
