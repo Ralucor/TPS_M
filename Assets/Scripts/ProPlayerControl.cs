@@ -61,6 +61,11 @@ public class ProPlayerControl : MonoBehaviour
             rb.linearDamping = groundDrag;
         else
             rb.linearDamping = 0;
+
+         if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
     }
 
     private void FixedUpdate()
